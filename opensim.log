@@ -1,0 +1,101 @@
+[2025-03-31 13:25:48.504] [info] Preparing to run InverseDynamicsTool.
+[2025-03-31 13:25:48.516] [info] Updating Model file from 40000 to latest format...
+[2025-03-31 13:25:48.538] [info] Loaded model 3DGaitModelwithSimpleArms from file C:\Users\eriks\Documents\Code\opensimAD_linux\examples\Hamner_modified.osim
+[2025-03-31 13:25:48.539] [warning] Couldn't find file 'sacrum.vtp'.
+[2025-03-31 13:25:48.539] [warning] Couldn't find file 'pelvis.vtp'.
+[2025-03-31 13:25:48.539] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2025-03-31 13:25:48.539] [warning] Couldn't find file 'femur_r.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'tibia_r.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'fibula_r.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'talus_rv.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'foot.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'bofoot.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'femur_l.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'tibia_l.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'fibula_l.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'talus_lv.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'l_foot.vtp'.
+[2025-03-31 13:25:48.540] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'hat_spine.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'hat_skull.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'hat_ribs_scap.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'humerus_rv.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'ulna_rv.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'radius_rv.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'pisiform_rvs.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'lunate_rvs.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'scaphoid_rvs.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'triquetrum_rvs.vtp'.
+[2025-03-31 13:25:48.541] [warning] Couldn't find file 'hamate_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'capitate_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'trapezoid_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'trapezium_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'metacarpal2_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'index_proximal_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'index_medial_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'index_distal_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'metacarpal3_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'middle_proximal_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'middle_medial_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'middle_distal_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'metacarpal4_rvs.vtp'.
+[2025-03-31 13:25:48.542] [warning] Couldn't find file 'ring_proximal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'ring_medial_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'ring_distal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'metacarpal5_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'little_proximal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'little_medial_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'little_distal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'metacarpal1_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'thumb_proximal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'thumb_distal_rvs.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'humerus_lv.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'ulna_lv.vtp'.
+[2025-03-31 13:25:48.543] [warning] Couldn't find file 'radius_lv.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'pisiform_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'lunate_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'scaphoid_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'triquetrum_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'hamate_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'capitate_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'trapezoid_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'trapezium_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'metacarpal2_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'index_proximal_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'index_medial_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'index_distal_lvs.vtp'.
+[2025-03-31 13:25:48.544] [warning] Couldn't find file 'metacarpal3_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'middle_proximal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'middle_medial_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'middle_distal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'metacarpal4_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'ring_proximal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'ring_medial_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'ring_distal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'metacarpal5_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'little_proximal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'little_medial_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'little_distal_lvs.vtp'.
+[2025-03-31 13:25:48.545] [warning] Couldn't find file 'metacarpal1_lvs.vtp'.
+[2025-03-31 13:25:48.871] [warning] Couldn't find file 'thumb_proximal_lvs.vtp'.
+[2025-03-31 13:25:48.871] [warning] Couldn't find file 'thumb_distal_lvs.vtp'.
+[2025-03-31 13:25:48.882] [cout] [info] 
+               MODEL: 3DGaitModelwithSimpleArms
+         coordinates: 31
+              forces: 104
+           actuators: 92
+             muscles: 92
+            analyses: 0
+              probes: 0
+              bodies: 20
+              joints: 20
+         constraints: 0
+             markers: 0
+         controllers: 0
+  contact geometries: 13
+misc modelcomponents: 0
+[2025-03-31 13:25:48.883] [info] Running tool ID_withOsimAndIDTool...
+[2025-03-31 13:25:48.883] [info] No external loads will be applied (external loads file not specified).
+[2025-03-31 13:25:48.920] [info] Storage: read data file = C:\Users\eriks\Documents\Code\opensimAD_linux\InverseDynamics\Verify_F_Hamner.mot (nr=10 nc=32)
+[2025-03-31 13:25:48.929] [info] InverseDynamicsTool: 10 time frames in 6 millisecond(s).
