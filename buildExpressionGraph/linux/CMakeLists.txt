@@ -1,5 +1,5 @@
-cmake_minimum_required (VERSION 3.10)
-set (CMAKE_CXX_STANDARD 11)
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 11)
 
 set(TARGET_NAME 
     "" 
@@ -20,8 +20,8 @@ target_compile_definitions(${TARGET_NAME} PUBLIC SimTK_REAL_IS_ADOUBLE)
 
 target_link_libraries(${TARGET_NAME} PUBLIC ${SDK_DIR}/lib/libosimCommon_recorder.so ${SDK_DIR}/lib/libosimSimulation_recorder.so ${SDK_DIR}/lib/libSimTKcommon_recorder.so ${SDK_DIR}/lib/libSimTKmath_recorder.so ${SDK_DIR}/lib/libSimTKsimbody_recorder.so)
 
-add_custom_command(TARGET ${TARGET_NAME}
-        POST_BUILD
-        COMMAND ${TARGET_NAME}
-        )
+#add_custom_command(TARGET ${TARGET_NAME}
+#        POST_BUILD
+#        COMMAND ${TARGET_NAME}
+#        )
 		

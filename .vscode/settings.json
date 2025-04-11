@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/nml/Documents/Projects/opensimAD_linux/buildExternalFunction",
+    "files.associations": {
+        "iterator": "cpp"
+    }
+}

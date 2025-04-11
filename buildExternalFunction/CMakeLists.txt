@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.6)
 set (CMAKE_CXX_STANDARD 11)
 
 set(TARGET_NAME 
@@ -27,5 +27,5 @@ set(CMAKE_INSTALL_PREFIX
     ${INSTALL_DIR}
     CACHE
     PATH
-    "Default CMAKE_INSTALL_PREFIX." FORCE)
+    "Default CMAKE_INSTALL_PREFIX."FORCE)
 		

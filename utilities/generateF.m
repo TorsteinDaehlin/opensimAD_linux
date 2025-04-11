@@ -1,4 +1,4 @@
-function [] = generateF(nInputs, fooPath, secondOrderDerivatives)
+    function [] = generateF(nInputs, fooPath, secondOrderDerivatives)
 % --------------------------------------------------------------------------
 % generateF
 %   Generates an expression graph of the function and its derivative
@@ -70,7 +70,9 @@ function [] = generateF(nInputs, fooPath, secondOrderDerivatives)
 nInputs = int16(nInputs); % Ensure nInputs is the correct type, as passing it as a double causes an error in python
 
 cd(fooPath);
-pyrunfile(fullfile(pathUtilities, 'genF.py'), nInput=nInputs);
+cmd = sprintf(['python ' fullfile(pathUtilities, 'genF.py') ' %i %s'], ...
+    nInputs, fooPath);
+system(cmd);
 
 cd(pathUtilities);
 

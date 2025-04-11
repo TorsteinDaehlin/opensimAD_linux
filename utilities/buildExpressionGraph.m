@@ -46,7 +46,7 @@ function [pathFoo] = buildExpressionGraph(outputFilename,...
 [pathUtilities,~,~] = fileparts(mfilename('fullpath'));
 [pathMain,~,~] = fileparts(pathUtilities);
 pathBuildExpressionGraph = fullfile(pathMain, 'buildExpressionGraph');
-OpenSimAD_DIR = fullfile(pathMain, 'OpenSimAD-install');
+OpenSimAD_DIR = fullfile(pathMain, 'opensimAD-install');
 CPP_DIR = outputDir;
 
 if ispc
@@ -86,7 +86,7 @@ elseif isunix
     end
     
     cmd1 = ['cmake "' pathBuildExpressionGraphOS '" -DTARGET_NAME:STRING="' ...
-        outputFilename '" -DSDK_DIR:PATH="' OpenSimADOS_DIR '" -DCPP_DIR:PATH="' CPP_DIR '"'];
+        outputFilename '" -DSDK_DIR:PATH="' OpenSimADOS_DIR '" -DCPP_DIR:PATH="' CPP_DIR '"' ' -DCMAKE_BUILD_TYPE=Debug'];
     cmd2 = 'make';
     
     BIN_DIR = pathBuild;
@@ -158,11 +158,17 @@ fclose(fid);
 
 try
     cd(BIN_DIR);
-    path_EXE = fullfile(pathBuild, 'RelWithDebInfo', [outputFilename '.exe']);
-    system(['"' path_EXE '"']);
-    
-    copyfile(path_bin_foo, pathFoo);
-    delete(path_bin_foo);
+    if ispc
+        path_EXE = fullfile(pathBuild, 'RelWithDebInfo', [outputFilename '.exe']);
+        system(['"' path_EXE '"']);
+        copyfile(path_bin_foo, pathFoo);
+        delete(path_bin_foo);
+    end
+
+    if isunix
+        path_EXE = fullfile(pathBuild, outputFilename);
+        system(['"' path_EXE '"'])
+    end
 
 catch ME
     % clean-up

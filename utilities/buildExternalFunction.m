@@ -64,14 +64,22 @@ copyfile(fullfile(path_external_functions_build,'CMakeLists.txt'), path_external
 copyfile(fullfile(fooPath,'foo_jac.c'), path_external_functions_filename_build)
 cd(path_external_functions_filename_build);
 
-cmd1 = ['cmake "', path_external_functions_filename_build, '" -G "', compiler, '" -DTARGET_NAME:STRING="',...
-    outputFilename, '" -DINSTALL_DIR:PATH="', path_external_functions_filename_install, '"'];
+if ispc
+    cmd1 = ['cmake "', path_external_functions_filename_build, '" -G "', compiler, '" -DTARGET_NAME:STRING="',...
+        outputFilename, '" -DINSTALL_DIR:PATH="', path_external_functions_filename_install, '"'];
+    cmd2 = 'cmake --build . --config RelWithDebInfo --target install';
+elseif isunix
+    cmd1 = ['cmake "' path_external_functions_filename_build '" -DTARGET_NAME:STRING="' outputFilename ...
+        '" -DINSTALL_DIR:PATH="' path_external_functions_filename_install '"'];
+    cmd2 = "make install";
+end
+
 if verbose_mode
     system(cmd1);
 else
     [~,~] = system(cmd1);
 end
-cmd2 = 'cmake --build . --config RelWithDebInfo --target install';
+
 if verbose_mode
     system(cmd2);
 else
@@ -80,8 +88,13 @@ end
 cd(pathMain);
 
 %% copy generated files to output directory
-copyfile(fullfile(path_external_functions_filename_install, 'bin', [outputFilename '.dll']), outputDir);
-copyfile(fullfile(path_external_functions_filename_install, 'lib', [outputFilename '.lib']), outputDir);
+if ispc
+    copyfile(fullfile(path_external_functions_filename_install, 'bin', [outputFilename '.dll']), outputDir);
+    copyfile(fullfile(path_external_functions_filename_install, 'lib', [outputFilename '.lib']), outputDir);
+elseif isunix
+    movefile(fullfile(path_external_functions_filename_install, 'lib', ['lib' outputFilename '.so']), ...
+        fullfile(outputDir, [outputFilename '.so']));
+end
 
 %% remove directories with temporary files
 rmdir(path_expression_graph_filename_build, 's');

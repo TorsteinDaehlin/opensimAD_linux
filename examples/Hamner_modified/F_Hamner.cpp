@@ -10,6 +10,7 @@
 #include <OpenSim/Common/MultiplierFunction.h>
 #include <OpenSim/Common/Constant.h>
 #include <OpenSim/Simulation/Model/SmoothSphereHalfSpaceForce.h>
+#include <OpenSim/Simulation/SimulationUtilities.h>
 #include "SimTKcommon/internal/recorder.h"
 
 #include <iostream>
@@ -34,40 +35,6 @@ template<typename T>
 T value(const Recorder& e) { return e; }; 
 template<> 
 double value(const Recorder& e) { return e.getValue(); }; 
-
-SimTK::Array_<int> getIndicesOSInSimbody(const Model& model) { 
-	auto s = model.getWorkingState(); 
-	const auto svNames = model.getStateVariableNames(); 
-	SimTK::Array_<int> idxOSInSimbody(s.getNQ()); 
-	s.updQ() = 0; 
-	for (int iy = 0; iy < s.getNQ(); ++iy) { 
-		s.updQ()[iy] = SimTK::NaN; 
-		const auto svValues = model.getStateVariableValues(s); 
-		for (int isv = 0; isv < svNames.size(); ++isv) { 
-			if (SimTK::isNaN(svValues[isv])) { 
-				s.updQ()[iy] = 0; 
-				idxOSInSimbody[iy] = isv/2; 
-				break; 
-			} 
-		} 
-	} 
-	return idxOSInSimbody; 
-} 
-
-SimTK::Array_<int> getIndicesSimbodyInOS(const Model& model) { 
-	auto idxOSInSimbody = getIndicesOSInSimbody(model); 
-	auto s = model.getWorkingState(); 
-	SimTK::Array_<int> idxSimbodyInOS(s.getNQ()); 
-	for (int iy = 0; iy < s.getNQ(); ++iy) { 
-		for (int iyy = 0; iyy < s.getNQ(); ++iyy) { 
-			if (idxOSInSimbody[iyy] == iy) { 
-				idxSimbodyInOS[iy] = iyy; 
-				break; 
-			} 
-		} 
-	} 
-	return idxSimbodyInOS; 
-} 
 
 template<typename T>
 int F_generic(const T** arg, T** res) {
@@ -733,7 +700,7 @@ int F_generic(const T** arg, T** res) {
 	for (int i = 0; i < NX; ++i) QsUs[i] = x[i];
 	/// Controls
 	/// OpenSim and Simbody have different state orders.
-	auto indicesOSInSimbody = getIndicesOSInSimbody(*model);
+	auto indicesOSInSimbody = getIndicesOpenSimInSimbody(*model);
 	for (int i = 0; i < nCoordinates; ++i) ua[i] = u[indicesOSInSimbody[i]];
 
 	// Set state variables and realize.
@@ -1022,7 +989,7 @@ int F_generic(const T** arg, T** res) {
 	osim_double_adouble P_HC_y_11 = SmoothSphereHalfSpaceForce_s6_l_velocity_G[1]*GRF_11[1][1];
 	/// Outputs.
 	/// Residual forces (OpenSim and Simbody have different state orders).
-	auto indicesSimbodyInOS = getIndicesSimbodyInOS(*model);
+	auto indicesSimbodyInOS = getIndicesSimbodyInOpenSim(*model);
 	for (int i = 0; i < nCoordinates; ++i) res[0][i] =
 			value<T>(residualMobilityForces[indicesSimbodyInOS[i]]);
 	for (int i = 0; i < 3; ++i) res[0][i + nCoordinates + 0] = value<T>(left_shin_posInGround[i]);

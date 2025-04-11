@@ -1,7 +1,11 @@
+import sys
+import os
 import casadi as ca
 import importlib
 
-def generateF(dim):
+def generateF(dim, fooPath):
+    sys.path.append(fooPath)
+    os.chdir(fooPath)
     import foo
     importlib.reload(foo)
     cg = ca.CodeGenerator('foo_jac')
@@ -12,4 +16,6 @@ def generateF(dim):
     cg.add(F.jacobian())
     cg.generate()
 
-generateF(nInput)
+nInput = int(sys.argv[1])
+fooPath = sys.argv[2]
+generateF(nInput, fooPath)

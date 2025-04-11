@@ -99,3 +99,4 @@ misc modelcomponents: 0
 [2025-03-31 13:25:48.883] [info] No external loads will be applied (external loads file not specified).
 [2025-03-31 13:25:48.920] [info] Storage: read data file = C:\Users\eriks\Documents\Code\opensimAD_linux\InverseDynamics\Verify_F_Hamner.mot (nr=10 nc=32)
 [2025-03-31 13:25:48.929] [info] InverseDynamicsTool: 10 time frames in 6 millisecond(s).
+[2025-04-10 12:55:38.952] [cout] [info] OpenSim version 4.5.1-2025-04-01-5cf2dacc8, build date 15:42:59 Apr  1 2025

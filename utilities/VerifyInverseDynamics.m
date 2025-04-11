@@ -36,8 +36,6 @@ function [] = VerifyInverseDynamics(pathOpenSimModel, outputDir, outputFilename,
 % Last edit date: 
 % --------------------------------------------------------------------------
 
-
-import org.opensim.modeling.*;
 import casadi.*
 
 [pathUtilities,~,~] = fileparts(mfilename('fullpath'));
@@ -54,13 +52,12 @@ all_coordi = IO.coordi;
 joint_isTra = IO.jointi.translations;
 nCoordinates = length(coordinatesOrder);
 
-% Run ID with the .osim file and verify that we can get the same torques as with the external function.
-model = Model(pathOpenSimModel);
-model.initSystem();
-coordinateSet = model.getCoordinateSet();
-
 % Extract torques from external function.
-F = external('F', replace(fullfile(outputDir, [outputFilename, '.dll']),'\','/'));
+if ispc
+    F = external('F', replace(fullfile(outputDir, [outputFilename, '.dll']),'\','/'));
+elseif isunix
+    F = external('F', fullfile(outputDir, [outputFilename, '.so']));
+end
 vec1 = zeros(IO.input.nInputs, 1);
 vec1(1:2:2*nCoordinates) = 0.05;
 if isfield(IO.input.Qs, 'pelvis_ty')
@@ -73,6 +70,13 @@ ID_F = ID_F(1:nCoordinates);
 % Generate .mot file with same position inputs
 mot_file = ['Verify_', outputFilename, '.mot'];
 path_mot = fullfile(pathID, mot_file);
+
+import org.opensim.modeling.*;
+
+% Run ID with the .osim file and verify that we can get the same torques as with the external function.
+model = Model(pathOpenSimModel);
+model.initSystem();
+coordinateSet = model.getCoordinateSet();
 
 if ~exist(path_mot, 'file')
     labels = [{'time'}, coordinatesOrder'];
