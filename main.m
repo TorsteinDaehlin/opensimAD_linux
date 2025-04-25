@@ -1,13 +1,14 @@
 % --------------------------------------------------------------------------
 % This script uses OpenSimAD to generate a CasADi external function. Given
 % an OpenSim model provided as an .osim file, this script generates a C++
-% file with a function F building the musculoskeletal model programmatically 
-% and running inverse dynamics. The C++ file is then compiled as an .exe, 
-% which when run generates the expression graph underlying F. From this
-% expression graph, CasADi can generate C code containing the function F
-% and its Jacobian in a format understandable by CasADi. This code is 
-% finally compiled as a .dll that can be imported when formulating 
-% trajectory optimization problems with CasADi.
+% file with a function F building the musculoskeletal model
+% programmatically and running inverse dynamics. The C++ file is then
+% compiled as an executable file, which when run generates the expression
+% graph underlying F. From this expression graph, CasADi can generate C
+% code containing the function F and its Jacobian in a format
+% understandable by CasADi. This code is finally compiled as a dynamically
+% linked library that can be imported when formulating trajectory
+% optimization problems with CasADi.
 %
 % The function F takes as:
 %     - INPUTS: 
@@ -27,8 +28,8 @@
 % Original author: Lars D'Hondt (based on code by Antoine Falisse)
 % Original date: 8/May/2023
 %
-% Last edit by: 
-% Last edit date: 
+% Last edit by: Torstein E. Daehlin
+% Last edit date: 25/April/2025
 % --------------------------------------------------------------------------
 
 clear
@@ -38,6 +39,7 @@ clc
 % Get current directory
 pathMain = pwd;
 addpath(fullfile(pathMain,'utilities'))
+addpath(fullfile(pathMain, 'casadi_matlab/'))
 
 %% User inputs
 
@@ -54,7 +56,8 @@ end
 outputFilename = 'F_Hamner';
 
 % Compiler
-compiler = 'Visual Studio 16 2019';
+% compiler = 'Visual Studio 16 2019';
+compiler = [];
 
 % Print information to the command window
 verbose_mode = true;

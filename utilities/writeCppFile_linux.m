@@ -97,8 +97,8 @@ function [] = writeCppFile_linux(pathOpenSimModel, outputDir, outputFilename,...
 % OUTPUT:
 %   - (This function does not return outputs) -
 % 
-% Original author: Lars D'Hondt (based on code by Antoine Falisse)
-% Original date: 8/May/2023
+% Original author: Torstein E. Daehlin (based on code by Lars D'Hondt and Antoine Falisse)
+% Original date: 9/April/2025
 %
 % Last edit by: 
 % Last edit date: 

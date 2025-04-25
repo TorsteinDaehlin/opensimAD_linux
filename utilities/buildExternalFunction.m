@@ -1,7 +1,7 @@
 function [] = buildExternalFunction(fooPath, outputFilename, outputDir, compiler, verbose_mode)
 % --------------------------------------------------------------------------
 % buildExternalFunction
-%   Compiles the expression graph (foo_jac.c) into an external function (.dll)
+%   Compiles the expression graph (foo_jac.c) into an external function
 %
 %
 % INPUT:
@@ -39,8 +39,8 @@ function [] = buildExternalFunction(fooPath, outputFilename, outputDir, compiler
 % Original author: Lars D'Hondt (based on code by Antoine Falisse)
 % Original date: 8/May/2023
 %
-% Last edit by: 
-% Last edit date: 
+% Last edit by: Torstein E Daehlin
+% Last edit date: 10/April/2025
 % --------------------------------------------------------------------------
 
 %% set paths

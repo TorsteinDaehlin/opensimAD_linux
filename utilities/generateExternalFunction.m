@@ -9,10 +9,10 @@ function [] = generateExternalFunction(pathOpenSimModel, outputDir,...
 %   Given an OpenSim model provided as an .osim file, this script generates
 %   a C++ file with a function F building the musculoskeletal model 
 %   programmatically and running inverse dynamics. The C++ file is then 
-%   compiled as an .exe, which when run generates the expression graph 
+%   compiled as an executable, which when run generates the expression graph 
 %   underlying F. From this expression graph, CasADi can generate C code 
 %   containing the function F and its Jacobian in a format understandable 
-%   by CasADi. This code is finally compiled as a .dll that can be imported 
+%   by CasADi. This code is finally compiled as a dynamically linked library that can be imported 
 %   when formulating trajectory optimization problems with CasADi.
 %
 %   The function F takes as:
@@ -95,7 +95,7 @@ function [] = generateExternalFunction(pathOpenSimModel, outputDir,...
 %   * export deformation power of each contact element. [bool]
 %
 %   - compiler -
-%   * command prompt argument for the compiler. [char]
+%   * command prompt argument for the compiler. Can be empty when using Linux based systems [char]
 %   Example inputs:
 %       Visual studio 2015: 'Visual Studio 14 2015 Win64'
 %       Visual studio 2017: 'Visual Studio 15 2017 Win64'
@@ -103,7 +103,7 @@ function [] = generateExternalFunction(pathOpenSimModel, outputDir,...
 %       Visual studio 2017: 'Visual Studio 17 2022'
 %
 %   - verbose_mode -
-%   * outputs from windows command prompt are printed to matlab command 
+%   * outputs from command prompt are printed to matlab command 
 %   window if true. [bool]
 %
 %   - verify_ID -
@@ -121,18 +121,19 @@ function [] = generateExternalFunction(pathOpenSimModel, outputDir,...
 %   This function does not return outputs, but generates files. Assuming 
 %   outputFilename = 'filename', the following files are saved in the folder 
 %   given by outputDir. 
-%   - filename.dll -
+%   - filename.[extension] -
 %   * file containing the CasADi external function. To get the function in
-%   matlab, use: F = external('F','filename.dll')
+%   matlab, use: F = external('F','filename.[extension]')
 %   This function takes a column vector as input, and returns a column 
 %   vector as output. For more info on external functions, 
 %   see https://web.casadi.org/docs/#using-the-generated-code
 %
 %   - filename.cpp -
-%   * source code for the .dll, you do not need this.
+%   * source code for the dynamicallu linked library, you do not need this.
 %
 %   - filename.lib -
 %   * if you want to compile code that calls filename.dll, you need this.
+%   Not created on Linux based platforms
 %
 %   - filename_IO.mat -
 %   * contains a struct (IO) where the fieldnames denote an output of the
@@ -159,8 +160,8 @@ function [] = generateExternalFunction(pathOpenSimModel, outputDir,...
 % Original author: Lars D'Hondt (based on code by Antoine Falisse)
 % Original date: 8/May/2023
 %
-% Last edit by: 
-% Last edit date: 
+% Last edit by: Torstein E. Daehlin
+% Last edit date: 25/April/2025
 % --------------------------------------------------------------------------
 
 %% write the cpp file.
@@ -176,7 +177,7 @@ writeCppFile_linux(pathOpenSimModel, outputDir, outputFilename,...
 load(fullfile(outputDir, [outputFilename, '_IO.mat']),'IO');
 generateF(IO.input.nInputs, fooPath, secondOrderDerivatives);
 
-%% Build external Function (.dll file).
+%% Build external Function.
 buildExternalFunction(fooPath, outputFilename, outputDir, compiler, verbose_mode);
 
 %% Verification

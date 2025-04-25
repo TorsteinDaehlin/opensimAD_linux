@@ -1,4 +1,4 @@
-    function [] = generateF(nInputs, fooPath, secondOrderDerivatives)
+    function [] = generateF(nInputs, fooPath)
 % --------------------------------------------------------------------------
 % generateF
 %   Generates an expression graph of the function and its derivative
@@ -28,38 +28,10 @@
 % Original author: Lars D'Hondt (based on code by Antoine Falisse)
 % Original date: 8/May/2023
 %
-% Last edit by: 
-% Last edit date: 
+% Last edit by: Torstein E Daehlin
+% Last edit date: 10/April/2025
 % --------------------------------------------------------------------------
 
-% import casadi.*
-% cg = CodeGenerator('foo_jac');
-% arg = SX.sym('arg', dim);
-% [y, ~, ~] = foo(arg);
-% F = Function('F', {arg}, {y});
-% cg.add(F);
-% cg.add(F.jacobian());
-% % % Generate also forward, reverse, and forward-over-reverse to use a exact Hessian
-% % Fr = F.reverse(1);
-% % cg.add(Fr);
-% % for i=0:6
-% %     cg.add(F.forward(2^i));
-% %     cg.add(Fr.forward(2^i));
-% % end
-% cg.generate();
-
-
-% Evaluating foo.py with SX symbolics does not work from matlab. Need to
-% change recorder to create foo.m instead. For now, we use the compiled
-% version of genF.py.
-
-% [pathUtilities,~,~] = fileparts(mfilename('fullpath'));
-% cd(fullfile(pathUtilities,'GenF'))
-% 
-% command = ['GenF.exe "' fooPath '" ' num2str(nInputs) ' ' num2str(secondOrderDerivatives)];
-% system(command);
-% 
-% cd ..
 
 % We use MATLABs built-in functionality for calling python code to generate
 % the external funcition from foo.py. 
@@ -67,7 +39,7 @@
 
 [pathUtilities, ~, ~] = fileparts(mfilename('fullpath'));
 
-nInputs = int16(nInputs); % Ensure nInputs is the correct type, as passing it as a double causes an error in python
+nInputs = int16(nInputs); % Ensures nInputs is the correct type as passing it as a double causes an error in python
 
 cd(fooPath);
 cmd = sprintf(['python ' fullfile(pathUtilities, 'genF.py') ' %i %s'], ...
